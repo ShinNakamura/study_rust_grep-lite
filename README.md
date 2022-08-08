@@ -1,25 +1,16 @@
-## `src/bin`
+# grep-lite
 
-本編のプログラムに直接は関係無いけど、ちょっと書いて試したいとき。
+[詳解Rustプログラミング](https://www.shoeisha.co.jp/book/detail/9784798160221) P.87
+に載っている grep-lite を作成してみた。
 
-`src/bin` を作っておき、その中に`.rs`ファイルを置いて書いていく。
+個人的に通常の grep の使用でよく利用する -o (マッチ部分だけをプリント)を付け加えた。
 
-例えば:
+## 学習の内容
 
-`src/bin/foo.rs`
-```
-fn main() {
-    println!("{}", "foo");
-}
-```
+Rust 学習途上にて以下の部分が参考になった。
 
-などとファイルを作っておくと、以下のようにコマンドを実行できる。
-
-```
-$ cargo run --bin foo
-    Finished dev [unoptimized + debuginfo] target(s) in 0.00s
-     Running `target/debug/foo`
-foo
-```
-
-参考: https://natsutan.hatenablog.com/entry/2018/12/24/191720
+- バッファー付き読み込み。標準入力の排他ロック
+- `-`をファイル名を取得する位置引数のデフォにすることで、ファイル名がなければ標準入力から読むように動作を分岐
+- clapの基本的な書き方
+- 正規表現の使用
+- 読み込んだテキストを行ごとに処理する
